@@ -1,0 +1,13 @@
+plugins {
+    id "java"
+    id "com.github.johnrengelman.shadow" version "5.2.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.elasticsearch:elasticsearch-spark-13_2.10:6.3.2'
+    implementation project(path: ':aa2', configuration: 'shadow')
+}

@@ -1,0 +1,2 @@
+rootProject.name = "q56332118"
+include('aa1', 'aa2')
