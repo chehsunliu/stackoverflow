@@ -1,0 +1,8 @@
+rootProject.name = 'my-apps'
+
+includeBuild('../my-libs') {
+    dependencySubstitution {
+        substitute module('com.github.chehsunliu.stackoverflow.q68628691.mylibs:proj-1') using project(':proj-1')
+    }
+}
+include('app-1')

@@ -1,0 +1,2 @@
+rootProject.name = 'my-libs'
+include('proj-1', 'proj-2')
