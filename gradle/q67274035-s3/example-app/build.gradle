@@ -1,0 +1,29 @@
+plugins {
+    id "java"
+    id "application"
+}
+
+application {
+    mainClass = "com.example.app.App"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+repositories {
+    maven {
+        url "s3://YOUR-S3-BUCKET/YOUR-S3-PREFIX"
+        credentials(AwsCredentials) {
+            accessKey System.getenv("AWS_ACCESS_KEY_ID") ?: ""
+            secretKey System.getenv("AWS_SECRET_ACCESS_KEY") ?: ""
+            sessionToken System.getenv("AWS_SESSION_TOKEN") ?: null
+        }
+    }
+}
+
+dependencies {
+    implementation "com.example:props:0.0.1"
+}

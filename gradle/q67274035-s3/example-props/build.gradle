@@ -1,0 +1,31 @@
+plugins {
+    id "java"
+    id "maven-publish"
+}
+
+group = "com.example"
+version = "0.0.1"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "s3://YOUR-S3-BUCKET/YOUR-S3-PREFIX"
+            credentials(AwsCredentials) {
+                accessKey System.getenv("AWS_ACCESS_KEY_ID") ?: ""
+                secretKey System.getenv("AWS_SECRET_ACCESS_KEY") ?: ""
+                sessionToken System.getenv("AWS_SESSION_TOKEN") ?: null
+            }
+        }
+    }
+}
